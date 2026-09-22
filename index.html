@@ -3,581 +3,797 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Seth Percival — Certified Cool™</title>
+
+<title>SETH PERCIVAL — THE LEGEND</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;600;700&display=swap');
+
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #050505;
-  color: white;
-  overflow-x: hidden;
+    background: #020005;
+    color: white;
+    font-family: "Space Grotesk", sans-serif;
+    overflow-x: hidden;
 }
 
-/* Animated background */
-body::before {
-  content: "";
-  position: fixed;
-  inset: -50%;
-  z-index: -2;
-  background:
-    radial-gradient(circle at 20% 30%, #ff00cc 0, transparent 25%),
-    radial-gradient(circle at 80% 20%, #00eaff 0, transparent 25%),
-    radial-gradient(circle at 50% 90%, #7b00ff 0, transparent 30%);
-  filter: blur(80px);
-  animation: backgroundMove 12s ease-in-out infinite alternate;
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+section {
+    position: relative;
+    min-height: 100vh;
+    padding: 120px 6vw;
+    overflow: hidden;
 }
 
-@keyframes backgroundMove {
-  from { transform: translate(0,0) scale(1); }
-  to { transform: translate(5%, -4%) scale(1.15); }
+.noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: .035;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
 }
 
-/* Navigation */
+.cursor {
+    position: fixed;
+    width: 35px;
+    height: 35px;
+    border: 2px solid #ff00dd;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    transition: width .25s, height .25s;
+}
+
+.cursor-dot {
+    position: fixed;
+    width: 7px;
+    height: 7px;
+    background: #00ffff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10001;
+    transform: translate(-50%, -50%);
+}
+
+/* =========================================================
+   PARTICLE BACKGROUND
+========================================================= */
+
+#particles {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    background:
+        radial-gradient(circle at 50% 50%, #18002c 0%, #020005 55%);
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    opacity: .6;
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(110vh) scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .8;
+    }
+
+    80% {
+        opacity: .8;
+    }
+
+    100% {
+        transform: translateY(-20vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   NAV
+========================================================= */
+
 nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 20px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-  backdrop-filter: blur(15px);
-  background: rgba(0,0,0,.35);
-  border-bottom: 1px solid rgba(255,255,255,.1);
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1100px, 92%);
+    height: 70px;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(10,0,20,.55);
+    backdrop-filter: blur(20px);
+    border-radius: 50px;
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+
+    animation:
+        navDrop 1.2s cubic-bezier(.16,1,.3,1),
+        navGlow 3s ease-in-out infinite;
+}
+
+@keyframes navDrop {
+    from {
+        transform: translate(-50%, -150px) scale(.5);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes navGlow {
+    50% {
+        box-shadow:
+            0 0 20px #ff00cc22,
+            0 0 60px #00ffff11;
+    }
 }
 
 .logo {
-  font-size: 1.4rem;
-  font-weight: 900;
-  letter-spacing: -1px;
+    font-family: Anton, sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
 }
 
 .logo span {
-  color: #ff35d0;
+    color: #ff00cc;
+    animation: logoPulse 1.5s infinite alternate;
+}
+
+@keyframes logoPulse {
+    to {
+        color: #00ffff;
+        text-shadow: 0 0 25px #00ffff;
+    }
 }
 
 nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 25px;
-  opacity: .8;
-  transition: .3s;
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 700;
+    position: relative;
 }
 
-nav a:hover {
-  color: #00eaff;
-  opacity: 1;
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    width: 0;
+    height: 3px;
+    background: #ff00cc;
+    transition: .3s;
 }
 
-/* Hero */
+nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 120px 20px 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: .25;
+    animation: blob 8s ease-in-out infinite alternate;
+}
+
+.hero::before {
+    background: #ff00cc;
+    left: -300px;
+    top: 20%;
+}
+
+.hero::after {
+    background: #00ffff;
+    right: -300px;
+    bottom: 0;
+    animation-delay: -4s;
+}
+
+@keyframes blob {
+    to {
+        transform:
+            translate(300px,-150px)
+            scale(1.5);
+    }
 }
 
 .hero-content {
-  max-width: 1000px;
+    position: relative;
+    z-index: 5;
 }
 
-.badge {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.2);
-  backdrop-filter: blur(10px);
-  margin-bottom: 25px;
-  animation: float 3s ease-in-out infinite;
+/* giant entrance */
+
+.hero-badge {
+    display: inline-block;
+    padding: 13px 25px;
+    border: 1px solid #ffffff33;
+    border-radius: 100px;
+    background: #ffffff0d;
+    backdrop-filter: blur(15px);
+
+    animation:
+        badgeIn 1s .3s both,
+        badgeFloat 3s 1.3s ease-in-out infinite;
 }
 
-@keyframes float {
-  50% { transform: translateY(-10px); }
+@keyframes badgeIn {
+    from {
+        opacity: 0;
+        transform:
+            translateY(-100px)
+            scale(.2)
+            rotate(-20deg);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1)
+            rotate(0);
+    }
 }
 
-h1 {
-  font-size: clamp(4rem, 13vw, 10rem);
-  line-height: .8;
-  letter-spacing: -8px;
-  background: linear-gradient(
-    90deg,
-    #fff,
-    #ff31d2,
-    #00eaff,
-    #fff
-  );
-  background-size: 300%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: gradient 5s linear infinite;
+@keyframes badgeFloat {
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
-@keyframes gradient {
-  to { background-position: 300%; }
+.hero h1 {
+    font-family: Anton, sans-serif;
+    font-size: clamp(100px, 19vw, 290px);
+    line-height: .75;
+    letter-spacing: -8px;
+    margin: 45px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ff00cc,
+            #7b00ff,
+            #00ffff,
+            #fff
+        );
+
+    background-size: 400%;
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation:
+        titleIn 1.5s .4s cubic-bezier(.16,1,.3,1) both,
+        rainbowText 5s linear infinite,
+        titleFloat 4s ease-in-out infinite;
 }
 
-.hero p {
-  font-size: 1.4rem;
-  max-width: 650px;
-  margin: 35px auto;
-  color: #ccc;
+@keyframes titleIn {
+    from {
+        opacity: 0;
+        transform:
+            translateY(250px)
+            scale(.2)
+            rotateX(80deg);
+        filter: blur(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1)
+            rotateX(0);
+        filter: blur(0);
+    }
 }
 
-.button {
-  display: inline-block;
-  padding: 17px 30px;
-  border-radius: 999px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  background: linear-gradient(90deg,#ff00c8,#7c3cff);
-  box-shadow: 0 0 40px rgba(255,0,200,.35);
-  transition: .3s;
+@keyframes rainbowText {
+    to {
+        background-position: 400%;
+    }
 }
 
-.button:hover {
-  transform: scale(1.08) rotate(-2deg);
-  box-shadow: 0 0 70px rgba(255,0,200,.7);
+@keyframes titleFloat {
+    50% {
+        transform: translateY(-18px) scale(1.02);
+    }
 }
 
-/* Sections */
-section {
-  padding: 120px 7%;
+.hero-subtitle {
+    max-width: 700px;
+    margin: auto;
+    font-size: clamp(18px, 2vw, 25px);
+    color: #bbb;
+    animation: subtitleIn 1.2s 1s both;
 }
+
+@keyframes subtitleIn {
+    from {
+        opacity: 0;
+        transform: scale(.2);
+        filter: blur(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 45px;
+    padding: 22px 40px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 100px;
+
+    background:
+        linear-gradient(90deg,#ff00cc,#7b00ff,#00ffff,#ff00cc);
+
+    background-size: 300%;
+
+    box-shadow:
+        0 0 30px #ff00cc66,
+        0 0 80px #7b00ff44;
+
+    animation:
+        buttonIn 1s 1.3s both,
+        buttonGradient 3s linear infinite,
+        buttonPulse 2s ease-in-out infinite;
+}
+
+@keyframes buttonIn {
+    from {
+        opacity: 0;
+        transform: scale(0) rotate(20deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+@keyframes buttonGradient {
+    to {
+        background-position: 300%;
+    }
+}
+
+@keyframes buttonPulse {
+    50% {
+        transform: scale(1.08);
+        box-shadow:
+            0 0 50px #ff00ccaa,
+            0 0 120px #7b00ffaa;
+    }
+}
+
+.hero-button:hover {
+    transform: scale(1.2) rotate(-3deg);
+}
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee {
+    height: 100px;
+    background: linear-gradient(90deg,#ff00cc,#7300ff,#00ffff);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    transform: rotate(-2deg) scale(1.05);
+    margin: 50px 0;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 12s linear infinite;
+}
+
+.marquee span {
+    font-family: Anton;
+    font-size: 55px;
+    padding: 0 35px;
+    color: #050005;
+    white-space: nowrap;
+}
+
+@keyframes marquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* =========================================================
+   SECTION TITLES
+========================================================= */
 
 .section-title {
-  text-align: center;
-  font-size: clamp(2.5rem,6vw,5rem);
-  margin-bottom: 60px;
-  letter-spacing: -3px;
+    text-align: center;
+    font-family: Anton;
+    font-size: clamp(70px, 11vw, 160px);
+    line-height: .8;
+    margin-bottom: 100px;
+
+    background: linear-gradient(90deg,#fff,#ff00cc,#00ffff,#fff);
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation: rainbowText 4s linear infinite;
 }
 
-/* Cards */
+/* =========================================================
+   CARDS
+========================================================= */
+
 .cards {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  gap: 25px;
+    max-width: 1300px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 35px;
 }
 
 .card {
-  padding: 35px;
-  min-height: 260px;
-  border-radius: 25px;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.12);
-  backdrop-filter: blur(15px);
-  transition: transform .15s, border-color .3s, box-shadow .3s;
-  transform-style: preserve-3d;
+    min-height: 350px;
+    padding: 40px;
+    border-radius: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.025)
+        );
+
+    border: 1px solid #ffffff22;
+    backdrop-filter: blur(20px);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .2s,
+        box-shadow .5s,
+        border-color .5s;
+
+    position: relative;
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(150px) rotateX(45deg) scale(.7);
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0) rotateX(0) scale(1);
+
+    animation:
+        cardFloat 4s ease-in-out infinite;
+}
+
+.card:nth-child(2) {
+    animation-delay: -.7s;
+}
+
+.card:nth-child(3) {
+    animation-delay: -1.4s;
+}
+
+.card:nth-child(4) {
+    animation-delay: -2.1s;
+}
+
+.card:nth-child(5) {
+    animation-delay: -2.8s;
+}
+
+.card:nth-child(6) {
+    animation-delay: -3.5s;
+}
+
+@keyframes cardFloat {
+    50% {
+        transform:
+            translateY(-18px)
+            rotateZ(.5deg);
+    }
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #ff00cc;
+    filter: blur(100px);
+    opacity: 0;
+    transition: .5s;
+}
+
+.card:hover::before {
+    opacity: .25;
 }
 
 .card:hover {
-  border-color: #00eaff;
-  box-shadow: 0 20px 60px rgba(0,234,255,.15);
+    border-color: #ff00cc;
+    box-shadow:
+        0 30px 100px #ff00cc22,
+        0 0 50px #00ffff11;
 }
 
-.card .icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
+.card-icon {
+    font-size: 80px;
+    margin-bottom: 30px;
+    display: inline-block;
+
+    animation:
+        iconSpin 5s linear infinite,
+        iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconSpin {
+    0%,90% { transform: rotate(0); }
+    95% { transform: rotate(15deg); }
+    100% { transform: rotate(0); }
+}
+
+@keyframes iconBounce {
+    50% {
+        transform: translateY(-15px) scale(1.15);
+    }
 }
 
 .card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
+    font-family: Anton;
+    font-size: 38px;
+    margin-bottom: 15px;
 }
 
 .card p {
-  color: #aaa;
-  line-height: 1.6;
+    color: #aaa;
+    font-size: 17px;
+    line-height: 1.7;
 }
 
-/* Coolness meter */
-.coolness {
-  max-width: 850px;
-  margin: auto;
-  text-align: center;
+/* =========================================================
+   COOLNESS
+========================================================= */
+
+.cool-section {
+    display: grid;
+    place-items: center;
+    text-align: center;
 }
 
-.meter {
-  height: 45px;
-  padding: 5px;
-  border-radius: 999px;
-  background: #151515;
-  border: 1px solid #333;
-  overflow: hidden;
+.cool-number {
+    font-family: Anton;
+    font-size: clamp(100px,20vw,280px);
+    background: linear-gradient(90deg,#ff00cc,#00ffff,#fff,#ff00cc);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation:
+        rainbowText 3s linear infinite,
+        numberPulse 1s ease-in-out infinite alternate;
 }
 
-.meter-fill {
-  width: 0%;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg,#00eaff,#ff00c8,#ffea00);
-  transition: width 2s cubic-bezier(.17,.67,.3,1.2);
+@keyframes numberPulse {
+    to {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 50px #ff00cc);
+    }
 }
 
-.score {
-  font-size: 5rem;
-  font-weight: 900;
-  margin: 25px;
+.cool-bar {
+    width: min(1000px,90vw);
+    height: 70px;
+    padding: 7px;
+    border: 2px solid #ffffff22;
+    border-radius: 100px;
+    background: #ffffff08;
+    overflow: hidden;
 }
 
-/* Quote */
+.cool-fill {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #ff00cc 0 20px,
+            #7b00ff 20px 40px,
+            #00ffff 40px 60px
+        );
+
+    background-size: 120px;
+
+    box-shadow:
+        0 0 40px #ff00cc,
+        0 0 100px #00ffff;
+
+    transition: width 3s cubic-bezier(.16,1,.3,1);
+
+    animation: barMove 1s linear infinite;
+}
+
+@keyframes barMove {
+    to {
+        background-position: 120px 0;
+    }
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.stat {
+    text-align: center;
+    padding: 45px 20px;
+    border-radius: 30px;
+    background: #ffffff08;
+    border: 1px solid #ffffff15;
+
+    animation: statFloat 3s ease-in-out infinite;
+}
+
+.stat:nth-child(2) {
+    animation-delay: -.5s;
+}
+
+.stat:nth-child(3) {
+    animation-delay: -1s;
+}
+
+.stat:nth-child(4) {
+    animation-delay: -1.5s;
+}
+
+@keyframes statFloat {
+    50% {
+        transform: translateY(-20px) scale(1.03);
+    }
+}
+
+.stat-number {
+    font-family: Anton;
+    font-size: 75px;
+    color: #00ffff;
+    text-shadow: 0 0 30px #00ffff;
+}
+
+.stat-label {
+    color: #888;
+}
+
+/* =========================================================
+   GIANT QUOTE
+========================================================= */
+
 .quote {
-  min-height: 60vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
+    display: grid;
+    place-items: center;
+    text-align: center;
 }
 
-.quote blockquote {
-  max-width: 900px;
-  font-size: clamp(2rem,5vw,5rem);
-  font-weight: 900;
-  line-height: 1;
+.quote-text {
+    max-width: 1200px;
+    font-family: Anton;
+    font-size: clamp(60px,10vw,150px);
+    line-height: .85;
+
+    animation: quoteFloat 4s ease-in-out infinite;
 }
 
-.quote span {
-  color: #ff32d0;
+.quote-text span {
+    color: #ff00cc;
+    display: inline-block;
+
+    animation:
+        wordShake 1s infinite alternate,
+        wordGlow 2s infinite alternate;
 }
 
-/* Easter egg */
-.secret {
-  text-align: center;
-  padding: 80px 20px;
+@keyframes quoteFloat {
+    50% {
+        transform: scale(1.03) rotate(-1deg);
+    }
 }
 
-.secret button {
-  border: 1px solid #444;
-  background: #111;
-  color: white;
-  padding: 15px 25px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: .3s;
+@keyframes wordShake {
+    to {
+        transform: rotate(2deg) scale(1.04);
+    }
 }
 
-.secret button:hover {
-  background: #222;
-  transform: scale(1.05);
+@keyframes wordGlow {
+    to {
+        text-shadow:
+            0 0 20px #ff00cc,
+            0 0 80px #ff00cc;
+    }
 }
 
-#secretMessage {
-  margin-top: 25px;
-  font-size: 2rem;
-  display: none;
+/* =========================================================
+   ORBIT
+========================================================= */
+
+.orbit-section {
+    display: grid;
+    place-items: center;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 50px;
-  color: #666;
-  border-top: 1px solid #222;
+.orbit {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    animation: orbitRotate
 }
-
-/* Cursor glow */
-.cursor {
-  position: fixed;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  background: rgba(255,0,200,.08);
-  filter: blur(50px);
-  pointer-events: none;
-  transform: translate(-50%,-50%);
-  z-index: -1;
-}
-
-@media(max-width:600px) {
-  nav a {
-    display: none;
-  }
-
-  h1 {
-    letter-spacing: -4px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<div class="cursor" id="cursor"></div>
-
-<nav>
-  <div class="logo">SETH<span>.</span></div>
-
-  <div>
-    <a href="#why">Why Seth?</a>
-    <a href="#meter">Coolness</a>
-    <a href="#secret">Secret</a>
-  </div>
-</nav>
-
-<main>
-
-<section class="hero">
-  <div class="hero-content">
-
-    <div class="badge">
-      ✨ OFFICIALLY VERY COOL
-    </div>
-
-    <h1>SETH<br>PERCIVAL</h1>
-
-    <p>
-      Welcome to the internet's completely unnecessary,
-      extremely dramatic, scientifically questionable
-      appreciation page for Seth Percival.
-    </p>
-
-    <a class="button" href="#why">
-      Discover The Coolness ↓
-    </a>
-
-  </div>
-</section>
-
-<section id="why">
-
-  <h2 class="section-title">
-    Why is Seth so cool?
-  </h2>
-
-  <div class="cards">
-
-    <div class="card tilt">
-      <div class="icon">😎</div>
-      <h3>Immaculate Vibes</h3>
-      <p>
-        Seth possesses an entirely hypothetical level
-        of vibe density that conventional instruments
-        cannot measure.
-      </p>
-    </div>
-
-    <div class="card tilt">
-      <div class="icon">⚡</div>
-      <h3>Maximum Energy</h3>
-      <p>
-        Somewhere between legendary and unnecessarily
-        energetic lies the natural habitat of Seth.
-      </p>
-    </div>
-
-    <div class="card tilt">
-      <div class="icon">🧠</div>
-      <h3>Big Brain</h3>
-      <p>
-        Nobody knows exactly what is going on in there.
-        Frankly, that's probably for the best.
-      </p>
-    </div>
-
-    <div class="card tilt">
-      <div class="icon">🔥</div>
-      <h3>Certified Fire</h3>
-      <p>
-        Scientists have attempted to calculate Seth's
-        fire levels. The calculator caught fire.
-      </p>
-    </div>
-
-    <div class="card tilt">
-      <div class="icon">🏆</div>
-      <h3>Main Character</h3>
-      <p>
-        Walks into the room. Background music begins.
-        Nobody knows where it came from.
-      </p>
-    </div>
-
-    <div class="card tilt">
-      <div class="icon">🚀</div>
-      <h3>Limitless</h3>
-      <p>
-        Why stop at being cool when you can become
-        an entirely different unit of measurement?
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<section id="meter">
-
-  <h2 class="section-title">
-    THE COOLNESS METER
-  </h2>
-
-  <div class="coolness">
-
-    <div class="score" id="score">0%</div>
-
-    <div class="meter">
-      <div class="meter-fill" id="meterFill"></div>
-    </div>
-
-    <p style="margin-top:30px;color:#aaa">
-      Please wait while our highly qualified scientists
-      calculate the Seth Percival Coolness Index™.
-    </p>
-
-  </div>
-
-</section>
-
-<section class="quote">
-
-  <blockquote>
-    "There are cool people.
-    <span>Then there is Seth.</span>"
-  </blockquote>
-
-</section>
-
-<section class="secret" id="secret">
-
-  <h2 class="section-title">
-    You found the secret button.
-  </h2>
-
-  <button onclick="revealSecret()">
-    🚨 DO NOT PRESS 🚨
-  </button>
-
-  <div id="secretMessage">
-    SETH HAS ACHIEVED MAXIMUM COOLNESS. 🗿🔥😎
-  </div>
-
-</section>
-
-</main>
-
-<footer>
-  Made with entirely excessive amounts of CSS for Seth Percival © 2026
-</footer>
-
-<script>
-
-/* Cursor glow */
-const cursor = document.getElementById("cursor");
-
-document.addEventListener("mousemove", e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
-
-/* 3D cards */
-document.querySelectorAll(".tilt").forEach(card => {
-
-  card.addEventListener("mousemove", e => {
-
-    const rect = card.getBoundingClientRect();
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const rotateX = ((y / rect.height) - .5) * -12;
-    const rotateY = ((x / rect.width) - .5) * 12;
-
-    card.style.transform =
-      `perspective(800px)
-       rotateX(${rotateX}deg)
-       rotateY(${rotateY}deg)
-       scale(1.03)`;
-
-  });
-
-  card.addEventListener("mouseleave", () => {
-    card.style.transform =
-      "perspective(800px) rotateX(0) rotateY(0) scale(1)";
-  });
-
-});
-
-/* Coolness meter */
-const observer = new IntersectionObserver(entries => {
-
-  if(entries[0].isIntersecting) {
-
-    const fill = document.getElementById("meterFill");
-    const score = document.getElementById("score");
-
-    fill.style.width = "100%";
-
-    let current = 0;
-
-    const interval = setInterval(() => {
-
-      current += Math.ceil(Math.random() * 7);
-
-      if(current >= 100) {
-        current = 100;
-        clearInterval(interval);
-      }
-
-      score.textContent = current + "%";
-
-    }, 70);
-
-    observer.disconnect();
-  }
-
-});
-
-observer.observe(document.getElementById("meter"));
-
-/* Secret */
-function revealSecret() {
-
-  const message = document.getElementById("secretMessage");
-
-  message.style.display = "block";
-
-  document.body.style.animation = "rainbow 1s infinite";
-
-  for(let i=0;i<30;i++) {
-
-    const emoji = document.createElement("div");
-
-    emoji.textContent =
-      ["😎","🔥","⚡","🗿","🚀","✨"][Math.floor(Math.random()*6)];
-
-    emoji.style.position = "fixed";
-    emoji.style.left = Math.random()*100 + "vw";
-    emoji.style.top = "-50px";
-    emoji.style.fontSize = "30px";
-    emoji.style.zIndex = "999";
-
-    document.body.appendChild(emoji);
-
-    emoji.animate([
-      { transform:"translateY(0) rotate(0deg)" },
-      { transform:"translateY(110vh) rotate(720deg)" }
-    ], {
-      duration: 2000 + Math.random()*3000,
-      easing:"linear"
-    }).onfinish = () => emoji.remove();
-
-  }
-}
-
-</script>
-
-</body>
-</html>
