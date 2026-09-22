@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Totally Fictional Seth Percival Stink Archive</title>
+  <title>Seth Percival Is Super Cool</title>
 
   <style>
     * {
@@ -14,154 +14,169 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #151515;
-      color: #f5f5f5;
-      line-height: 1.6;
+      background: #090d18;
+      color: #f5f7ff;
+      line-height: 1.7;
     }
 
     header {
-      min-height: 70vh;
+      min-height: 75vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
       background:
-        radial-gradient(circle at 30% 40%, #6b7d19 0, transparent 25%),
-        radial-gradient(circle at 70% 60%, #3e5310 0, transparent 25%),
-        #111;
+        radial-gradient(circle at 20% 30%, #3b5cff 0, transparent 25%),
+        radial-gradient(circle at 80% 70%, #9b32ff 0, transparent 25%),
+        linear-gradient(135deg, #080b16, #151b38);
+      overflow: hidden;
     }
 
     .hero {
-      max-width: 850px;
+      max-width: 900px;
     }
 
     .badge {
       display: inline-block;
-      background: #b6d23a;
+      background: #ffffff;
       color: #111;
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 999px;
-      font-weight: bold;
-      margin-bottom: 20px;
+      font-weight: 800;
+      margin-bottom: 25px;
+      box-shadow: 0 0 25px rgba(255,255,255,.3);
     }
 
     h1 {
-      font-size: clamp(3rem, 10vw, 7rem);
+      font-size: clamp(3.5rem, 11vw, 8rem);
       line-height: .9;
       text-transform: uppercase;
-      letter-spacing: -4px;
-      text-shadow: 5px 5px 0 #283400;
+      letter-spacing: -5px;
+      text-shadow: 0 0 35px rgba(79,116,255,.7);
     }
 
     h1 span {
-      color: #b6d23a;
+      color: #6380ff;
     }
 
     .subtitle {
       margin: 30px auto;
-      max-width: 650px;
-      color: #ccc;
-      font-size: 1.2rem;
+      max-width: 700px;
+      color: #cbd2f0;
+      font-size: 1.25rem;
     }
 
     .button {
       display: inline-block;
-      background: #b6d23a;
-      color: #111;
+      background: #6380ff;
+      color: white;
       text-decoration: none;
-      padding: 14px 24px;
-      border-radius: 8px;
+      padding: 15px 28px;
+      border-radius: 10px;
       font-weight: 800;
+      box-shadow: 0 8px 30px rgba(99,128,255,.3);
       transition: .2s;
     }
 
     .button:hover {
-      transform: translateY(-3px);
-      background: #d1ed51;
+      transform: translateY(-4px) scale(1.03);
+      background: #8198ff;
     }
 
     main {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: auto;
-      padding: 70px 20px;
+      padding: 80px 20px;
     }
 
-    .notice {
-      border: 2px solid #b6d23a;
-      background: #202020;
-      padding: 25px;
-      border-radius: 14px;
+    .intro {
+      text-align: center;
       margin-bottom: 60px;
-      color: #ddd;
     }
 
-    .notice strong {
-      color: #b6d23a;
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 30px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #202020;
-      border: 1px solid #333;
-      border-radius: 14px;
-      padding: 25px;
-      transition: .2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #b6d23a;
-    }
-
-    .emoji {
-      font-size: 3rem;
+    .intro h2 {
+      font-size: 2.8rem;
       margin-bottom: 15px;
     }
 
-    .card h3 {
-      color: #b6d23a;
-      margin-bottom: 10px;
+    .intro p {
+      color: #aeb7d8;
     }
 
-    .meter {
-      margin-top: 15px;
-      height: 12px;
-      background: #333;
-      border-radius: 99px;
-      overflow: hidden;
+    .essay {
+      background: #11172b;
+      border: 1px solid #27325a;
+      border-radius: 20px;
+      padding: 45px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
     }
 
-    .meter div {
-      height: 100%;
-      background: linear-gradient(90deg, #b6d23a, #667900);
-      border-radius: inherit;
+    .essay h2 {
+      color: #7890ff;
+      font-size: 2.3rem;
+      margin-bottom: 25px;
+    }
+
+    .essay p {
+      margin-bottom: 22px;
+      color: #dce1f5;
+    }
+
+    .highlight {
+      color: #8ea2ff;
+      font-weight: bold;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 60px;
+    }
+
+    .stat {
+      background: #11172b;
+      border: 1px solid #27325a;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #7890ff;
+    }
+
+    .stat-label {
+      color: #aeb7d8;
     }
 
     .quote {
-      margin-top: 70px;
+      margin: 70px auto 0;
+      max-width: 750px;
       text-align: center;
       font-size: 2rem;
       font-weight: bold;
-      color: #b6d23a;
+      color: #7890ff;
     }
 
     footer {
       text-align: center;
-      padding: 40px 20px;
-      color: #777;
-      border-top: 1px solid #292929;
-      font-size: .9rem;
+      padding: 45px 20px;
+      color: #697394;
+      border-top: 1px solid #1b2340;
+    }
+
+    @media (max-width: 600px) {
+      .essay {
+        padding: 25px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
     }
   </style>
 </head>
@@ -170,97 +185,121 @@
 
   <header>
     <div class="hero">
-      <div class="badge">⚠️ 100% FICTIONAL SATIRE</div>
+      <div class="badge">⭐ OFFICIAL COOLNESS ARCHIVE ⭐</div>
 
       <h1>
         Seth <span>Percival</span><br>
-        Stink Archive
+        Is Super Cool
       </h1>
 
       <p class="subtitle">
-        An entirely ridiculous, completely fictional investigation
-        into the alleged stink powers of a character named Seth Percival.
+        A completely serious and extremely scientific appreciation
+        of one of the coolest people to ever exist.
       </p>
 
-      <a class="button" href="#evidence">ENTER THE ARCHIVE →</a>
+      <a class="button" href="#essay">DISCOVER THE COOLNESS ↓</a>
     </div>
   </header>
 
   <main>
 
-    <section class="notice">
-      <strong>Important:</strong>
-      This website is a joke and a work of fictional satire.
-      The claims below are deliberately absurd and should not be
-      treated as factual statements about any real person.
+    <section class="intro">
+      <h2>Why Is Seth So Cool?</h2>
+      <p>
+        The answer is simple: there are too many reasons to count.
+      </p>
     </section>
 
-    <section id="evidence">
-      <h2>📁 The Completely Unreliable Evidence</h2>
+    <section class="essay" id="essay">
 
-      <div class="cards">
+      <h2>📖 The Great Essay on the Coolness of Seth Percival</h2>
 
-        <article class="card">
-          <div class="emoji">🧦</div>
-          <h3>The Sock Incident</h3>
-          <p>
-            According to absolutely nobody credible, one sock allegedly
-            survived three washing cycles and still smelled suspicious.
-          </p>
-          <div class="meter">
-            <div style="width: 97%"></div>
-          </div>
-        </article>
+      <p>
+        Seth Percival is, without question, an exceptionally cool individual.
+        His coolness is not merely a temporary phenomenon, nor is it something
+        that can be switched on and off. It is a fundamental part of what makes
+        Seth Seth. Wherever he goes, an undeniable sense of confidence,
+        personality, and sheer coolness seems to follow.
+      </p>
 
-        <article class="card">
-          <div class="emoji">🧀</div>
-          <h3>Cheese Comparison</h3>
-          <p>
-            Scientists in this fictional universe reportedly compared
-            the smell to mature cheese. The cheese filed a complaint.
-          </p>
-          <div class="meter">
-            <div style="width: 88%"></div>
-          </div>
-        </article>
+      <p>
+        One of the most impressive things about Seth is his ability to make
+        ordinary situations feel extraordinary. While most people simply walk
+        into a room, Seth can enter a room and make it feel like something
+        important has just happened. This is a rare quality. Historians have
+        attempted to explain it, but their research has so far consisted
+        primarily of writing the words <span class="highlight">"Seth is cool"</span>
+        repeatedly.
+      </p>
 
-        <article class="card">
-          <div class="emoji">🌪️</div>
-          <h3>Atmospheric Event</h3>
-          <p>
-            A completely imaginary weather station allegedly detected
-            suspicious atmospheric turbulence within a five-metre radius.
-          </p>
-          <div class="meter">
-            <div style="width: 91%"></div>
-          </div>
-        </article>
+      <p>
+        Another important factor is Seth's incredible level of natural
+        confidence. True coolness does not require constant attention or
+        endless attempts to impress people. It simply exists. Seth demonstrates
+        this principle beautifully. His coolness appears effortless, as though
+        he accidentally became cool and then decided it was too late to go back.
+      </p>
 
-        <article class="card">
-          <div class="emoji">🚨</div>
-          <h3>Odour Emergency</h3>
-          <p>
-            In this fictional timeline, emergency services were called.
-            They arrived, smelled nothing, and went home for lunch.
-          </p>
-          <div class="meter">
-            <div style="width: 76%"></div>
-          </div>
-        </article>
+      <p>
+        Seth also deserves recognition for his legendary status among the
+        fictional experts who study coolness. According to absolutely rigorous
+        research conducted by the International Institute of Being Cool,
+        Seth's coolness exceeds the scientifically recognised maximum by
+        approximately 847 percent.
+      </p>
 
+      <p>
+        Ultimately, however, statistics cannot fully explain why Seth Percival
+        is so cool. Coolness is not simply a number. It is an attitude, a
+        presence, and a way of approaching the world. Seth possesses all three.
+        He proves that sometimes the coolest thing a person can do is simply
+        be themselves.
+      </p>
+
+      <p>
+        In conclusion, Seth Percival is extremely cool. His coolness is
+        undeniable, immeasurable, and frankly becoming difficult for this
+        website to contain. Future generations may study his achievements,
+        philosophers may debate his greatness, and scientists may continue
+        searching for an explanation. Until then, one fact remains:
+        <span class="highlight">Seth Percival is super cool.</span>
+      </p>
+
+    </section>
+
+    <section class="stats">
+
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Certified Cool</div>
       </div>
+
+      <div class="stat">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Coolness Potential</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-number">847%</div>
+        <div class="stat-label">Above Maximum Cool</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-number">⭐</div>
+        <div class="stat-label">Absolute Legend</div>
+      </div>
+
     </section>
 
     <p class="quote">
-      “The evidence is questionable. The smell is imaginary.
-      The website is magnificent.”
+      “Some people are cool. Seth Percival is a whole different category.”
     </p>
 
   </main>
 
   <footer>
-    © 2026 The Totally Fictional Stink Archive ·
-    Satire · Parody · No factual allegations intended
+    © 2026 Seth Percival Coolness Archive ·
+    Extremely serious research department
   </footer>
 
 </body>
