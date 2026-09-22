@@ -1,9 +1,267 @@
-<!doctype html>
-<html>
-  <head>
-    <title>This is the title of theg dfsygdfs gdfsgdsfgdsfgdsfg webpage!</title>
-  </head>
-  <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Totally Fictional Seth Percival Stink Archive</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #151515;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background:
+        radial-gradient(circle at 30% 40%, #6b7d19 0, transparent 25%),
+        radial-gradient(circle at 70% 60%, #3e5310 0, transparent 25%),
+        #111;
+    }
+
+    .hero {
+      max-width: 850px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #b6d23a;
+      color: #111;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 10vw, 7rem);
+      line-height: .9;
+      text-transform: uppercase;
+      letter-spacing: -4px;
+      text-shadow: 5px 5px 0 #283400;
+    }
+
+    h1 span {
+      color: #b6d23a;
+    }
+
+    .subtitle {
+      margin: 30px auto;
+      max-width: 650px;
+      color: #ccc;
+      font-size: 1.2rem;
+    }
+
+    .button {
+      display: inline-block;
+      background: #b6d23a;
+      color: #111;
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-weight: 800;
+      transition: .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: #d1ed51;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px;
+    }
+
+    .notice {
+      border: 2px solid #b6d23a;
+      background: #202020;
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 60px;
+      color: #ddd;
+    }
+
+    .notice strong {
+      color: #b6d23a;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #202020;
+      border: 1px solid #333;
+      border-radius: 14px;
+      padding: 25px;
+      transition: .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #b6d23a;
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #b6d23a;
+      margin-bottom: 10px;
+    }
+
+    .meter {
+      margin-top: 15px;
+      height: 12px;
+      background: #333;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .meter div {
+      height: 100%;
+      background: linear-gradient(90deg, #b6d23a, #667900);
+      border-radius: inherit;
+    }
+
+    .quote {
+      margin-top: 70px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #b6d23a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #777;
+      border-top: 1px solid #292929;
+      font-size: .9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <div class="badge">⚠️ 100% FICTIONAL SATIRE</div>
+
+      <h1>
+        Seth <span>Percival</span><br>
+        Stink Archive
+      </h1>
+
+      <p class="subtitle">
+        An entirely ridiculous, completely fictional investigation
+        into the alleged stink powers of a character named Seth Percival.
+      </p>
+
+      <a class="button" href="#evidence">ENTER THE ARCHIVE →</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="notice">
+      <strong>Important:</strong>
+      This website is a joke and a work of fictional satire.
+      The claims below are deliberately absurd and should not be
+      treated as factual statements about any real person.
+    </section>
+
+    <section id="evidence">
+      <h2>📁 The Completely Unreliable Evidence</h2>
+
+      <div class="cards">
+
+        <article class="card">
+          <div class="emoji">🧦</div>
+          <h3>The Sock Incident</h3>
+          <p>
+            According to absolutely nobody credible, one sock allegedly
+            survived three washing cycles and still smelled suspicious.
+          </p>
+          <div class="meter">
+            <div style="width: 97%"></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="emoji">🧀</div>
+          <h3>Cheese Comparison</h3>
+          <p>
+            Scientists in this fictional universe reportedly compared
+            the smell to mature cheese. The cheese filed a complaint.
+          </p>
+          <div class="meter">
+            <div style="width: 88%"></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="emoji">🌪️</div>
+          <h3>Atmospheric Event</h3>
+          <p>
+            A completely imaginary weather station allegedly detected
+            suspicious atmospheric turbulence within a five-metre radius.
+          </p>
+          <div class="meter">
+            <div style="width: 91%"></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="emoji">🚨</div>
+          <h3>Odour Emergency</h3>
+          <p>
+            In this fictional timeline, emergency services were called.
+            They arrived, smelled nothing, and went home for lunch.
+          </p>
+          <div class="meter">
+            <div style="width: 76%"></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <p class="quote">
+      “The evidence is questionable. The smell is imaginary.
+      The website is magnificent.”
+    </p>
+
+  </main>
+
+  <footer>
+    © 2026 The Totally Fictional Stink Archive ·
+    Satire · Parody · No factual allegations intended
+  </footer>
+
+</body>
 </html>
