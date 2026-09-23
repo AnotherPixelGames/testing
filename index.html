@@ -1,583 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Seth Percival — Certified Cool™</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  <title>Seth Percival — Certified Cool™</title>
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #050505;
-  color: white;
-  overflow-x: hidden;
-}
-
-/* Animated background */
-body::before {
-  content: "";
-  position: fixed;
-  inset: -50%;
-  z-index: -2;
-  background:
-    radial-gradient(circle at 20% 30%, #ff00cc 0, transparent 25%),
-    radial-gradient(circle at 80% 20%, #00eaff 0, transparent 25%),
-    radial-gradient(circle at 50% 90%, #7b00ff 0, transparent 30%);
-  filter: blur(80px);
-  animation: backgroundMove 12s ease-in-out infinite alternate;
-}
-
-@keyframes backgroundMove {
-  from { transform: translate(0,0) scale(1); }
-  to { transform: translate(5%, -4%) scale(1.15); }
-}
-
-/* Navigation */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 20px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-  backdrop-filter: blur(15px);
-  background: rgba(0,0,0,.35);
-  border-bottom: 1px solid rgba(255,255,255,.1);
-}
-
-.logo {
-  font-size: 1.4rem;
-  font-weight: 900;
-  letter-spacing: -1px;
-}
-
-.logo span {
-  color: #ff35d0;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 25px;
-  opacity: .8;
-  transition: .3s;
-}
-
-nav a:hover {
-  color: #00eaff;
-  opacity: 1;
-}
-
-/* Hero */
-.hero {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 120px 20px 60px;
-}
-
-.hero-content {
-  max-width: 1000px;
-}
-
-.badge {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.2);
-  backdrop-filter: blur(10px);
-  margin-bottom: 25px;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  50% { transform: translateY(-10px); }
-}
-
-h1 {
-  font-size: clamp(4rem, 13vw, 10rem);
-  line-height: .8;
-  letter-spacing: -8px;
-  background: linear-gradient(
-    90deg,
-    #fff,
-    #ff31d2,
-    #00eaff,
-    #fff
-  );
-  background-size: 300%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: gradient 5s linear infinite;
-}
-
-@keyframes gradient {
-  to { background-position: 300%; }
-}
-
-.hero p {
-  font-size: 1.4rem;
-  max-width: 650px;
-  margin: 35px auto;
-  color: #ccc;
-}
-
-.button {
-  display: inline-block;
-  padding: 17px 30px;
-  border-radius: 999px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  background: linear-gradient(90deg,#ff00c8,#7c3cff);
-  box-shadow: 0 0 40px rgba(255,0,200,.35);
-  transition: .3s;
-}
-
-.button:hover {
-  transform: scale(1.08) rotate(-2deg);
-  box-shadow: 0 0 70px rgba(255,0,200,.7);
-}
-
-/* Sections */
-section {
-  padding: 120px 7%;
-}
-
-.section-title {
-  text-align: center;
-  font-size: clamp(2.5rem,6vw,5rem);
-  margin-bottom: 60px;
-  letter-spacing: -3px;
-}
-
-/* Cards */
-.cards {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-  gap: 25px;
-}
-
-.card {
-  padding: 35px;
-  min-height: 260px;
-  border-radius: 25px;
-  background: rgba(255,255,255,.07);
-  border: 1px solid rgba(255,255,255,.12);
-  backdrop-filter: blur(15px);
-  transition: transform .15s, border-color .3s, box-shadow .3s;
-  transform-style: preserve-3d;
-}
-
-.card:hover {
-  border-color: #00eaff;
-  box-shadow: 0 20px 60px rgba(0,234,255,.15);
-}
-
-.card .icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-}
-
-.card p {
-  color: #aaa;
-  line-height: 1.6;
-}
-
-/* Coolness meter */
-.coolness {
-  max-width: 850px;
-  margin: auto;
-  text-align: center;
-}
-
-.meter {
-  height: 45px;
-  padding: 5px;
-  border-radius: 999px;
-  background: #151515;
-  border: 1px solid #333;
-  overflow: hidden;
-}
-
-.meter-fill {
-  width: 0%;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg,#00eaff,#ff00c8,#ffea00);
-  transition: width 2s cubic-bezier(.17,.67,.3,1.2);
-}
-
-.score {
-  font-size: 5rem;
-  font-weight: 900;
-  margin: 25px;
-}
-
-/* Quote */
-.quote {
-  min-height: 60vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-}
-
-.quote blockquote {
-  max-width: 900px;
-  font-size: clamp(2rem,5vw,5rem);
-  font-weight: 900;
-  line-height: 1;
-}
-
-.quote span {
-  color: #ff32d0;
-}
-
-/* Easter egg */
-.secret {
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.secret button {
-  border: 1px solid #444;
-  background: #111;
-  color: white;
-  padding: 15px 25px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.secret button:hover {
-  background: #222;
-  transform: scale(1.05);
-}
-
-#secretMessage {
-  margin-top: 25px;
-  font-size: 2rem;
-  display: none;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 50px;
-  color: #666;
-  border-top: 1px solid #222;
-}
-
-/* Cursor glow */
-.cursor {
-  position: fixed;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  background: rgba(255,0,200,.08);
-  filter: blur(50px);
-  pointer-events: none;
-  transform: translate(-50%,-50%);
-  z-index: -1;
-}
-
-@media(max-width:600px) {
-  nav a {
-    display: none;
-  }
-
-  h1 {
-    letter-spacing: -4px;
-  }
-}
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="cursor" id="cursor"></div>
+  <div class="cursor" id="cursor"></div>
 
-<nav>
-  <div class="logo">SETH<span>.</span></div>
+  <nav>
+    <div class="logo">SETH<span>.</span></div>
 
-  <div>
-    <a href="#why">Why Seth?</a>
-    <a href="#meter">Coolness</a>
-    <a href="#secret">Secret</a>
-  </div>
-</nav>
-
-<main>
-
-<section class="hero">
-  <div class="hero-content">
-
-    <div class="badge">
-      ✨ OFFICIALLY VERY COOL
+    <div class="nav-links">
+      <a href="#why">Why Seth?</a>
+      <a href="#meter">Coolness</a>
+      <a href="#secret">Secret</a>
     </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+
+        <div class="badge">
+          ✨ OFFICIALLY VERY COOL
+        </div>
+
+        <h1>SETH<br>PERCIVAL</h1>
+
+        <p>
+          Welcome to the internet's completely unnecessary,
+          extremely dramatic, scientifically questionable
+          appreciation page for Seth Percival.
+        </p>
+
+        <a class="button" href="#why">
+          Discover The Coolness ↓
+        </a>
+
+      </div>
+    </section>
+
+
+    <!-- WHY SETH -->
+    <section id="why">
+
+      <h2 class="section-title">
+        Why is Seth so cool?
+      </h2>
+
+      <div class="cards">
+
+        <div class="card tilt">
+          <div class="icon">😎</div>
+          <h3>Immaculate Vibes</h3>
+          <p>
+            Seth possesses an entirely hypothetical level
+            of vibe density that conventional instruments
+            cannot measure.
+          </p>
+        </div>
+
+        <div class="card tilt">
+          <div class="icon">⚡</div>
+          <h3>Maximum Energy</h3>
+          <p>
+            Somewhere between legendary and unnecessarily
+            energetic lies the natural habitat of Seth.
+          </p>
+        </div>
 
-    <h1>SETH<br>PERCIVAL</h1>
-
-    <p>
-      Welcome to the internet's completely unnecessary,
-      extremely dramatic, scientifically questionable
-      appreciation page for Seth Percival.
-    </p>
-
-    <a class="button" href="#why">
-      Discover The Coolness ↓
-    </a>
-
-  </div>
-</section>
-
-<section id="why">
-
-  <h2 class="section-title">
-    Why is Seth so cool?
-  </h2>
-
-  <div class="cards">
-
-    <div class="card tilt">
-      <div class="icon">😎</div>
-      <h3>Immaculate Vibes</h3>
-      <p>
-        Seth possesses an entirely hypothetical level
-        of vibe density that conventional instruments
-        cannot measure.
-      </p>
-    </div>
-
-    <div class="card tilt">
-      <div class="icon">⚡</div>
-      <h3>Maximum Energy</h3>
-      <p>
-        Somewhere between legendary and unnecessarily
-        energetic lies the natural habitat of Seth.
-      </p>
-    </div>
-
-    <div class="card tilt">
-      <div class="icon">🧠</div>
-      <h3>Big Brain</h3>
-      <p>
-        Nobody knows exactly what is going on in there.
-        Frankly, that's probably for the best.
-      </p>
-    </div>
+        <div class="card tilt">
+          <div class="icon">🧠</div>
+          <h3>Big Brain</h3>
+          <p>
+            Nobody knows exactly what is going on in there.
+            Frankly, that's probably for the best.
+          </p>
+        </div>
 
-    <div class="card tilt">
-      <div class="icon">🔥</div>
-      <h3>Certified Fire</h3>
-      <p>
-        Scientists have attempted to calculate Seth's
-        fire levels. The calculator caught fire.
-      </p>
-    </div>
+        <div class="card tilt">
+          <div class="icon">🔥</div>
+          <h3>Certified Fire</h3>
+          <p>
+            Scientists have attempted to calculate Seth's
+            fire levels. The calculator caught fire.
+          </p>
+        </div>
 
-    <div class="card tilt">
-      <div class="icon">🏆</div>
-      <h3>Main Character</h3>
-      <p>
-        Walks into the room. Background music begins.
-        Nobody knows where it came from.
-      </p>
-    </div>
+        <div class="card tilt">
+          <div class="icon">🏆</div>
+          <h3>Main Character</h3>
+          <p>
+            Walks into the room. Background music begins.
+            Nobody knows where it came from.
+          </p>
+        </div>
 
-    <div class="card tilt">
-      <div class="icon">🚀</div>
-      <h3>Limitless</h3>
-      <p>
-        Why stop at being cool when you can become
-        an entirely different unit of measurement?
-      </p>
-    </div>
+        <div class="card tilt">
+          <div class="icon">🚀</div>
+          <h3>Limitless</h3>
+          <p>
+            Why stop at being cool when you can become
+            an entirely different unit of measurement?
+          </p>
+        </div>
 
-  </div>
-</section>
+      </div>
+    </section>
 
-<section id="meter">
 
-  <h2 class="section-title">
-    THE COOLNESS METER
-  </h2>
+    <!-- COOLNESS METER -->
+    <section id="meter">
 
-  <div class="coolness">
+      <h2 class="section-title">
+        THE COOLNESS METER
+      </h2>
 
-    <div class="score" id="score">0%</div>
+      <div class="coolness">
 
-    <div class="meter">
-      <div class="meter-fill" id="meterFill"></div>
-    </div>
+        <div class="score" id="score">0%</div>
 
-    <p style="margin-top:30px;color:#aaa">
-      Please wait while our highly qualified scientists
-      calculate the Seth Percival Coolness Index™.
-    </p>
+        <div class="meter">
+          <div
+            class="meter-fill"
+            id="meterFill">
+          </div>
+        </div>
 
-  </div>
+        <p class="meter-description">
+          Please wait while our highly qualified scientists
+          calculate the Seth Percival Coolness Index™.
+        </p>
 
-</section>
+      </div>
 
-<section class="quote">
+    </section>
 
-  <blockquote>
-    "There are cool people.
-    <span>Then there is Seth.</span>"
-  </blockquote>
 
-</section>
+    <!-- QUOTE -->
+    <section class="quote">
 
-<section class="secret" id="secret">
+      <blockquote>
+        "There are cool people.
+        <span>Then there is Seth.</span>"
+      </blockquote>
 
-  <h2 class="section-title">
-    You found the secret button.
-  </h2>
+    </section>
 
-  <button onclick="revealSecret()">
-    🚨 DO NOT PRESS 🚨
-  </button>
 
-  <div id="secretMessage">
-    SETH HAS ACHIEVED MAXIMUM COOLNESS. 🗿🔥😎
-  </div>
+    <!-- SECRET -->
+    <section class="secret" id="secret">
 
-</section>
+      <h2 class="section-title">
+        You found the secret button.
+      </h2>
 
-</main>
+      <button id="secretButton">
+        🚨 DO NOT PRESS 🚨
+      </button>
 
-<footer>
-  Made with entirely excessive amounts of CSS for Seth Percival © 2026
-</footer>
+      <div id="secretMessage">
+        SETH HAS ACHIEVED MAXIMUM COOLNESS. 🗿🔥😎
+      </div>
 
-<script>
+    </section>
 
-/* Cursor glow */
-const cursor = document.getElementById("cursor");
+  </main>
 
-document.addEventListener("mousemove", e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
 
-/* 3D cards */
-document.querySelectorAll(".tilt").forEach(card => {
+  <!-- FOOTER -->
+  <footer>
+    Made with entirely excessive amounts of CSS for Seth Percival © 2026
+  </footer>
 
-  card.addEventListener("mousemove", e => {
 
-    const rect = card.getBoundingClientRect();
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const rotateX = ((y / rect.height) - .5) * -12;
-    const rotateY = ((x / rect.width) - .5) * 12;
-
-    card.style.transform =
-      `perspective(800px)
-       rotateX(${rotateX}deg)
-       rotateY(${rotateY}deg)
-       scale(1.03)`;
-
-  });
-
-  card.addEventListener("mouseleave", () => {
-    card.style.transform =
-      "perspective(800px) rotateX(0) rotateY(0) scale(1)";
-  });
-
-});
-
-/* Coolness meter */
-const observer = new IntersectionObserver(entries => {
-
-  if(entries[0].isIntersecting) {
-
-    const fill = document.getElementById("meterFill");
-    const score = document.getElementById("score");
-
-    fill.style.width = "100%";
-
-    let current = 0;
-
-    const interval = setInterval(() => {
-
-      current += Math.ceil(Math.random() * 7);
-
-      if(current >= 100) {
-        current = 100;
-        clearInterval(interval);
-      }
-
-      score.textContent = current + "%";
-
-    }, 70);
-
-    observer.disconnect();
-  }
-
-});
-
-observer.observe(document.getElementById("meter"));
-
-/* Secret */
-function revealSecret() {
-
-  const message = document.getElementById("secretMessage");
-
-  message.style.display = "block";
-
-  document.body.style.animation = "rainbow 1s infinite";
-
-  for(let i=0;i<30;i++) {
-
-    const emoji = document.createElement("div");
-
-    emoji.textContent =
-      ["😎","🔥","⚡","🗿","🚀","✨"][Math.floor(Math.random()*6)];
-
-    emoji.style.position = "fixed";
-    emoji.style.left = Math.random()*100 + "vw";
-    emoji.style.top = "-50px";
-    emoji.style.fontSize = "30px";
-    emoji.style.zIndex = "999";
-
-    document.body.appendChild(emoji);
-
-    emoji.animate([
-      { transform:"translateY(0) rotate(0deg)" },
-      { transform:"translateY(110vh) rotate(720deg)" }
-    ], {
-      duration: 2000 + Math.random()*3000,
-      easing:"linear"
-    }).onfinish = () => emoji.remove();
-
-  }
-}
-
-</script>
+  <script src="script.js"></script>
 
 </body>
 </html>
