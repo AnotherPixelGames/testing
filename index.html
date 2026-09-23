@@ -1,188 +1,349 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Seth Percival — The Coolness Game™</title> <link rel="stylesheet" href="style.css"> </head> <body> <div class="cursor" id="cursor"></div> <!-- ========================= NAVIGATION ========================= --> <nav> <div class="logo">SETH<span>.</span></div>
+<div class="nav-links">
+  <a href="#game">PLAY</a>
+  <a href="#how-to-play">HOW TO PLAY</a>
+  <a href="#leaderboard">SCORE</a>
+</div>
 
-  <title>Seth Percival — Certified Cool™</title>
+</nav> <main>
+<!-- =========================
+     GAME HERO
+========================= -->
 
-  <link rel="stylesheet" href="style.css">
-</head>
+<section class="hero">
 
-<body>
+  <div class="hero-content">
 
-  <div class="cursor" id="cursor"></div>
-
-  <nav>
-    <div class="logo">SETH<span>.</span></div>
-
-    <div class="nav-links">
-      <a href="#why">Why Seth?</a>
-      <a href="#meter">Coolness</a>
-      <a href="#secret">Secret</a>
+    <div class="badge">
+      🎮 SETH PERCIVAL: THE GAME™
     </div>
-  </nav>
 
-  <main>
+    <h1>
+      BECOME<br>
+      THE<br>
+      SETH
+    </h1>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-content">
+    <p>
+      The completely unnecessary test of skill, reflexes,
+      vibes and questionable decision-making.
+    </p>
 
-        <div class="badge">
-          ✨ OFFICIALLY VERY COOL
-        </div>
+    <a class="button" href="#game">
+      🎮 PLAY THE GAME
+    </a>
 
-        <h1>SETH<br>PERCIVAL</h1>
+  </div>
 
-        <p>
-          Welcome to the internet's completely unnecessary,
-          extremely dramatic, scientifically questionable
-          appreciation page for Seth Percival.
-        </p>
+</section>
 
-        <a class="button" href="#why">
-          Discover The Coolness ↓
-        </a>
 
+<!-- =========================
+     GAME
+========================= -->
+
+<section id="game" class="game-section">
+
+  <h2 class="section-title">
+    ⚡ SETH SURVIVAL ⚡
+  </h2>
+
+  <div class="game-container">
+
+    <!-- GAME HUD -->
+
+    <div class="game-hud">
+
+      <div class="hud-item">
+        <span>😎 COOLNESS</span>
+        <strong id="gameScore">0</strong>
       </div>
-    </section>
+
+      <div class="hud-item">
+        <span>🔥 COMBO</span>
+        <strong id="combo">0x</strong>
+      </div>
+
+      <div class="hud-item">
+        <span>❤️ LIVES</span>
+        <strong id="lives">3</strong>
+      </div>
+
+      <div class="hud-item">
+        <span>🏆 HIGH SCORE</span>
+        <strong id="highScore">0</strong>
+      </div>
+
+    </div>
 
 
-    <!-- WHY SETH -->
-    <section id="why">
+    <!-- GAME CANVAS -->
 
-      <h2 class="section-title">
-        Why is Seth so cool?
-      </h2>
+    <div
+      id="gameArea"
+      class="game-area"
+      tabindex="0"
+      aria-label="Seth Survival game">
 
-      <div class="cards">
+      <div id="startScreen" class="game-overlay">
 
-        <div class="card tilt">
-          <div class="icon">😎</div>
-          <h3>Immaculate Vibes</h3>
+        <div class="game-message">
+
+          <div class="big-emoji">😎</div>
+
+          <h3>
+            READY TO BECOME SETH?
+          </h3>
+
           <p>
-            Seth possesses an entirely hypothetical level
-            of vibe density that conventional instruments
-            cannot measure.
+            Collect the cool stuff.<br>
+            Avoid the cringe.
           </p>
-        </div>
 
-        <div class="card tilt">
-          <div class="icon">⚡</div>
-          <h3>Maximum Energy</h3>
-          <p>
-            Somewhere between legendary and unnecessarily
-            energetic lies the natural habitat of Seth.
-          </p>
-        </div>
+          <button id="startGame">
+            🚀 START GAME
+          </button>
 
-        <div class="card tilt">
-          <div class="icon">🧠</div>
-          <h3>Big Brain</h3>
-          <p>
-            Nobody knows exactly what is going on in there.
-            Frankly, that's probably for the best.
-          </p>
-        </div>
-
-        <div class="card tilt">
-          <div class="icon">🔥</div>
-          <h3>Certified Fire</h3>
-          <p>
-            Scientists have attempted to calculate Seth's
-            fire levels. The calculator caught fire.
-          </p>
-        </div>
-
-        <div class="card tilt">
-          <div class="icon">🏆</div>
-          <h3>Main Character</h3>
-          <p>
-            Walks into the room. Background music begins.
-            Nobody knows where it came from.
-          </p>
-        </div>
-
-        <div class="card tilt">
-          <div class="icon">🚀</div>
-          <h3>Limitless</h3>
-          <p>
-            Why stop at being cool when you can become
-            an entirely different unit of measurement?
-          </p>
         </div>
 
       </div>
-    </section>
 
 
-    <!-- COOLNESS METER -->
-    <section id="meter">
+      <!-- Player -->
 
-      <h2 class="section-title">
-        THE COOLNESS METER
-      </h2>
-
-      <div class="coolness">
-
-        <div class="score" id="score">0%</div>
-
-        <div class="meter">
-          <div
-            class="meter-fill"
-            id="meterFill">
-          </div>
-        </div>
-
-        <p class="meter-description">
-          Please wait while our highly qualified scientists
-          calculate the Seth Percival Coolness Index™.
-        </p>
-
+      <div
+        id="player"
+        class="player"
+        aria-label="Player">
+        😎
       </div>
 
-    </section>
 
+      <!-- Game instructions -->
 
-    <!-- QUOTE -->
-    <section class="quote">
-
-      <blockquote>
-        "There are cool people.
-        <span>Then there is Seth.</span>"
-      </blockquote>
-
-    </section>
-
-
-    <!-- SECRET -->
-    <section class="secret" id="secret">
-
-      <h2 class="section-title">
-        You found the secret button.
-      </h2>
-
-      <button id="secretButton">
-        🚨 DO NOT PRESS 🚨
-      </button>
-
-      <div id="secretMessage">
-        SETH HAS ACHIEVED MAXIMUM COOLNESS. 🗿🔥😎
+      <div class="game-controls">
+        <span>⬅️ A / LEFT</span>
+        <span>⬆️ W / UP</span>
+        <span>⬇️ S / DOWN</span>
+        <span>➡️ D / RIGHT</span>
       </div>
 
-    </section>
-
-  </main>
+    </div>
 
 
-  <!-- FOOTER -->
-  <footer>
-    Made with entirely excessive amounts of CSS for Seth Percival © 2026
-  </footer>
+    <!-- GAME STATUS -->
+
+    <div
+      id="gameStatus"
+      class="game-status">
+      Press START to begin your journey to maximum coolness.
+    </div>
+
+  </div>
+
+</section>
 
 
-  <script src="script.js"></script>
+<!-- =========================
+     HOW TO PLAY
+========================= -->
 
-</body>
-</html>
+<section id="how-to-play">
+
+  <h2 class="section-title">
+    HOW TO PLAY
+  </h2>
+
+  <div class="cards">
+
+    <div class="card tilt">
+
+      <div class="icon">😎</div>
+
+      <h3>
+        Collect Coolness
+      </h3>
+
+      <p>
+        Grab the sunglasses, lightning bolts,
+        crowns and other extremely important
+        cool objects.
+      </p>
+
+    </div>
+
+
+    <div class="card tilt">
+
+      <div class="icon">💀</div>
+
+      <h3>
+        Avoid Cringe
+      </h3>
+
+      <p>
+        Cringe objects will destroy your combo
+        and cost you a life. Nobody wants that.
+      </p>
+
+    </div>
+
+
+    <div class="card tilt">
+
+      <div class="icon">🔥</div>
+
+      <h3>
+        Build Your Combo
+      </h3>
+
+      <p>
+        Collect multiple cool objects without
+        getting hit to multiply your score.
+      </p>
+
+    </div>
+
+
+    <div class="card tilt">
+
+      <div class="icon">⚡</div>
+
+      <h3>
+        Survive
+      </h3>
+
+      <p>
+        The game gets faster. The objects get
+        more chaotic. Your reflexes are tested.
+      </p>
+
+    </div>
+
+
+    <div class="card tilt">
+
+      <div class="icon">🏆</div>
+
+      <h3>
+        Beat Your Record
+      </h3>
+
+      <p>
+        Your highest score is saved locally.
+        Can you reach maximum coolness?
+      </p>
+
+    </div>
+
+
+    <div class="card tilt">
+
+      <div class="icon">🗿</div>
+
+      <h3>
+        Become Legendary
+      </h3>
+
+      <p>
+        There is absolutely no scientific reason
+        for this game to exist. Play anyway.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SCORE / COOLNESS
+========================= -->
+
+<section id="leaderboard">
+
+  <h2 class="section-title">
+    🏆 YOUR COOLNESS
+  </h2>
+
+  <div class="coolness">
+
+    <div
+      class="score"
+      id="finalScore">
+      0
+    </div>
+
+    <div class="meter">
+
+      <div
+        class="meter-fill"
+        id="meterFill">
+      </div>
+
+    </div>
+
+    <p class="meter-description">
+      Your current level of Seth Percival coolness.
+      The scientific community has been notified.
+    </p>
+
+    <div
+      id="rank"
+      class="rank">
+      UNRANKED
+    </div>
+
+    <button
+      id="playAgain"
+      class="button">
+      🔄 PLAY AGAIN
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     QUOTE
+========================= -->
+
+<section class="quote">
+
+  <blockquote>
+    "There are gamers.
+    <span>Then there is Seth.</span>"
+  </blockquote>
+
+</section>
+
+
+<!-- =========================
+     SECRET
+========================= -->
+
+<section
+  class="secret"
+  id="secret">
+
+  <h2 class="section-title">
+    🕵️ SECRET AREA
+  </h2>
+
+  <p>
+    Think you've mastered the game?
+  </p>
+
+  <button id="secretButton">
+    🚨 DEFINITELY DON'T PRESS THIS
+  </button>
+
+  <div id="secretMessage">
+    SETH HAS ACHIEVED MAXIMUM COOLNESS. 🗿🔥😎
+  </div>
+
+</section>
+
+</main> <!-- ========================= FOOTER ========================= --> <footer> Made with excessive amounts of JavaScript, questionable science and Seth Percival © 2026 </footer> <script src="script.js"></script> </body> </html>
